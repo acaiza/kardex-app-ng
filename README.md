@@ -1,2 +1,2 @@
 # kardex-app-ng
-Project angular apply control inventory 
+Project angular apply inventory control
