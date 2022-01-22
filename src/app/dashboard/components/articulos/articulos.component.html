@@ -1,0 +1,90 @@
+<div style="overflow-y: hidden; overflow-x: hidden">
+  <div class="p-grid">
+    <div class="p-col-5">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title">{{titles.nuevoArticulo}}</span>
+          </div>
+        </p-header>
+        <br/>
+        <div class="p-grid">
+          <div class="p-col-3">
+            <p-dropdown [options]="categoriasList" [(ngModel)]="categoriaSelect" optionLabel="descripcion"></p-dropdown>
+          </div>
+          <div class="p-col-4">
+            <span class="p-float-label">
+                <input id="cb" type="text" pInputText [(ngModel)]="nuevoArticlo.codigoBarras">
+                <label for="cb">{{tableHeaders[1].header}}</label>
+            </span>
+          </div>
+        </div>
+        <br/>
+        <div class="p-grid">
+          <div class="p-col-6">
+            <span class="p-float-label">
+              <input id="des" type="text" pInputText [(ngModel)]="nuevoArticlo.descripcion">
+              <label for="des">{{tableHeaders[2].header}}</label>
+            </span>
+          </div>
+        </div>
+        <br/>
+        <div class="p-grid">
+          <div class="p-col-6">
+            <span class="p-float-label">
+                <input id="pre" type="text" pInputText [(ngModel)]="nuevoArticlo.precio">
+                <label for="pre">{{tableHeaders[3].header}}</label>
+            </span>
+          </div>
+          <div class="p-col-6">
+            <span class="p-float-label">
+              <input id="ex" type="text" pInputText [(ngModel)]="nuevoArticlo.existencia">
+              <label for="ex">{{tableHeaders[4].header}}</label>
+            </span>
+          </div>
+        </div>
+        <br>
+        <p-button label="{{titles.guardar}}" icon="pi pi-check" iconPos="left"
+                  (onClick)="registrarArticulo()"></p-button>
+      </p-panel>
+    </div>
+    <div class="p-col-7">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title">{{titles.articulos}}</span>
+          </div>
+        </p-header>
+        <p-table
+          [scrollable]="true"
+          [columns]="tableHeaders"
+          [value]="articulos"
+          scrollHeight="calc(100vh - 310px)"
+          dataKey="idArticulo">
+
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th [style.width]="'45px'">No.</th>
+              <th *ngFor="let col of columns" [style.width]="col['widthForCell']">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+            <tr>
+              <td [style.width]="'45px'">
+                <span>{{ rowIndex }}</span>
+              </td>
+              <td *ngFor="let col of columns" [title]="rowData[col.field]" [style.width]="col['widthForCell']">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+      </p-panel>
+    </div>
+  </div>
+</div>
+

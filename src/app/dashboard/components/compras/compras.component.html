@@ -1,0 +1,110 @@
+<div style="overflow-y: hidden; overflow-x: hidden">
+  <div class="p-grid">
+    <div class="p-col-6">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title">{{titles.articulos}}</span>
+          </div>
+        </p-header>
+        <p-table
+          [scrollable]="true"
+          [columns]="tableHeaders"
+          [value]="articulos"
+          [(selection)]="articulosSeleccionados"
+          scrollHeight="calc(100vh - 310px)"
+          dataKey="idArticulo">
+
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th [style.width]="'45px'">No.</th>
+              <th [style.width]="'32px'">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th *ngFor="let col of columns" [style.width]="col['widthForCell']">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+            <tr>
+              <td [style.width]="'45px'">
+                <span>{{ rowIndex + 1 }}</span>
+              </td>
+              <td [style.width]="'32px'">
+                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+              </td>
+              <td *ngFor="let col of columns" [title]="rowData[col.field]" [style.width]="col['widthForCell']">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+      </p-panel>
+    </div>
+    
+    <div class="p-col-6">
+      <p-panel>
+        <div class="ui-helper-clearfix">
+          <div class="p-grid">
+            <div class="p-col-3">
+              <span class="ui-panel-title">Tipo de pago:</span>
+            </div>
+            <div class="p-col-5">
+              <p-dropdown [options]="tipoPagos" [(ngModel)]="tipoPagoSeleccionado"
+                          optionLabel="descripcionTipoPago"></p-dropdown>
+            </div>
+            <div class="p-col-1">
+              <button type="button" (click)="comprar()">
+                <span><i class="pi pi-shopping-cart"></i></span>
+                <span>Comprar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p-header>
+          <div class="p-col-12">
+            <span class="ui-panel-title">{{titles.articulosCompra}}</span>
+          </div>
+        </p-header>
+        <p-table
+          [scrollable]="true"
+          [columns]="tableHeadersCompra"
+          [value]="articulosSeleccionados"
+          scrollHeight="calc(100vh - 310px)"
+          dataKey="idArticulo">
+
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th [style.width]="'45px'">Nro.</th>
+              <th *ngFor="let col of columns" [style.width]="col['widthForCell']">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+            <tr>
+              <td [style.width]="'45px'">
+                <span>{{ rowIndex + 1 }}</span>
+              </td>
+              <ng-container *ngFor="let col of columns">
+                <td *ngIf="col.field !== 'cantidad'" [title]="rowData[col.field]" [style.width]="col['widthForCell']">
+                  {{rowData[col.field]}}
+                </td>
+                <td pEditableColumn *ngIf="col.field === 'cantidad'" [title]="rowData[col.field]"
+                    [style.width]="col['widthForCell']">
+                      <input pInputText style="width: 70px;" type="number" [(ngModel)]="rowData[col.field]"
+                             (ngModelChange)="validarExistencia(rowData)">
+                </td>
+              </ng-container>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-panel>
+    </div>
+  </div>
+</div>
+

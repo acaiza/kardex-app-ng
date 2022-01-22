@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/kardex-app-ng'),
+      dir: require('path').join(__dirname, './coverage/kardex-ng'),
       subdir: '.',
       reporters: [
         { type: 'html' },

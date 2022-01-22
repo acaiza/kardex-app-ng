@@ -1,0 +1,45 @@
+<!-- <div class="header">
+  <div class="logo">
+    <i class="pi pi-android"></i>
+    <span>Hulk Store</span>
+  </div>
+  <i class="nav-trigger fa fa-bars fa-lg" style="top: 40%;"></i>
+</div> -->
+<div class="side-nav">
+  <div class="logo">
+    <i class="pi pi-android"></i>
+    <span>Hulk Store</span>
+  </div>
+  <nav>
+    <ul>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/dashboard/compras']">
+          <span>
+            <!-- <i class="pi pi-shopping-bag"></i> -->
+            <span><i class="pi pi-check-circle"></i></span>
+          </span>
+          <span>Compras</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/dashboard/articulos']">
+          <span>
+            <i class="pi pi-images"></i>
+          </span>
+          <span>Articulos</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/dashboard/reporte']">
+          <span>
+            <i class="fa fa-calendar"></i>
+          </span>
+          <span>Reporte</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
