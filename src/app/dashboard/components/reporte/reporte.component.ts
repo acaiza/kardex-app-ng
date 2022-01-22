@@ -10,14 +10,15 @@ import {ReporteService} from './services/reporte.service';
 })
 export class ReporteComponent implements OnInit {
 
-  pedidos: any[];
+  compras: any[];
 
   constructor(private reporteService: ReporteService, private messageService: ToastrService, private loading: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
-    this.reporteService.obtenerPedidosPorUsuario().subscribe(data => {
-      this.pedidos = data;
+    this.reporteService.obtenerComprasPorUsuario().subscribe(data => {
+      debugger
+      this.compras = data;
     });
   }
 

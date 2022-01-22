@@ -13,10 +13,10 @@ export class ReporteService {
     this.baseUrl = '/kardexpro/';
   }
 
-  public obtenerPedidosPorUsuario(): Observable<any[]> {
+  public obtenerComprasPorUsuario(): Observable<any[]> {
     const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token'));
     const userName = localStorage.getItem('userName');
-    const url = `${this.baseUrl}kardex/obtenerPedidosPorUsuario/${userName}`;
+    const url = `${this.baseUrl}compra/obtenerComprasPorUsuario/${userName}`;
     return this.http.get<any[]>(url, {headers});
   }
 

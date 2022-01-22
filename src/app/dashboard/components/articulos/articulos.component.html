@@ -32,13 +32,13 @@
         <div class="p-grid">
           <div class="p-col-6">
             <span class="p-float-label">
-                <input id="pre" type="text" pInputText [(ngModel)]="nuevoArticlo.precio">
+                <input id="pre" type="number" pInputText [(ngModel)]="nuevoArticlo.precio">
                 <label for="pre">{{tableHeaders[3].header}}</label>
             </span>
           </div>
           <div class="p-col-6">
             <span class="p-float-label">
-              <input id="ex" type="text" pInputText [(ngModel)]="nuevoArticlo.existencia">
+              <input id="ex" type="number" pInputText [(ngModel)]="nuevoArticlo.existencia">
               <label for="ex">{{tableHeaders[4].header}}</label>
             </span>
           </div>

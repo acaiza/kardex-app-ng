@@ -1,16 +1,16 @@
 <p-table
-  [value]="pedidos"
-  dataKey="pedidoPk"
+  [value]="compras"
+  dataKey="idCompra"
   [scrollable]="true"
   scrollHeight="calc(100vh - 310px)">
   <ng-template pTemplate="header">
     <tr>
       <th style="width: 3rem"></th>
-      <th>Codigo Pedido</th>
+      <th>Codigo compra</th>
       <th>Usuario</th>
-      <th>Total Pedido</th>
-      <th>Tipo Pago</th>
-      <th>Fecha pedido</th>
+      <th>Total compra</th>
+      <th>Tipo pago</th>
+      <th>Fecha compra</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-product let-expanded="expanded">
@@ -20,24 +20,24 @@
                 class="p-button-text p-button-rounded p-button-plain"
                 [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
       </td>
-      <td>{{product.codigoPedido}}</td>
+      <td>{{product.codigoCompra}}</td>
       <td>{{product.persona.nombres}} {{product.persona.apellidos}}</td>
-      <td>{{product.totalPedido | currency:'USD'}}</td>
-      <td>{{product.tipoPago.descripcionPago}}</td>
-      <td>{{product.fechaCreacion | date: 'yyyy-MM-dd'}}</td>
+      <td>{{product.totalCompra | currency:'USD'}}</td>
+      <td>{{product.tipoPago.descripcionTipoPago}}</td>
+      <td>{{product.fechaRegistro | date: 'yyyy-MM-dd'}}</td>
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-product>
     <tr>
       <td colspan="7">
         <div class="p-p-3">
-          <p-table [value]="product.detallesPedio" dataKey="dpedidoDetallePk">
+          <p-table [value]="product.detallesCompra" dataKey="idDetalleCompra">
             <ng-template pTemplate="header">
     <tr>
       <th>Código Barras</th>
       <th>Descripción Articulo</th>
-      <th>Cantidad pedida</th>
-      <th>Rama</th>
+      <th>Cantidad comprada</th>
+      <th>Categoria</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-order>
@@ -45,7 +45,7 @@
       <td>{{order.articulo.codigoBarras}}</td>
       <td>{{order.articulo.descripcion}}</td>
       <td>{{order.cantidad}}</td>
-      <td>{{order.articulo.clasificacion.nombre}}</td>
+      <td>{{order.articulo.categoriaEntity.descripcion}}</td>
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage">
